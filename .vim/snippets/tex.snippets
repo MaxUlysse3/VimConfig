@@ -1,0 +1,46 @@
+snippet document
+	\\documentclass{$1}
+
+	\\usepackage[T1]{fontenc}
+	\\usepackage[margin=1.5cm]{geometry}
+	\\usepackage{array}
+	\\usepackage{booktabs}
+	\\usepackage{amsmath}
+	\\usepackage{amsfonts}
+	\\usepackage{amssymb}
+	\\usepackage{xcolor}
+	\\usepackage{ulem}
+	\\usepackage{enumitem}
+
+	\\newcommand\\sechidenum[1]{\\section*{#1} \\addcontentsline{toc}{section}{\\textbf{#1}} \\setcounter{subsection}{0}}
+	\\newcommand\\iltext[1]{\\quad \\text{#1} \\quad}
+	\\newcommand\\ilnote[1]{\\color{grey} \\texttt{#1}}
+	\\newcommand\\ts[1]{\\textsuperscript{#1}}
+	\\newcommand\\abs[1]{\\lvert #1 \\rvert}
+
+	\\title{$2}
+	\\author{$3}
+	\\date{$4}
+
+	\\begin{document}
+	\\maketitle
+
+	$5
+
+	\\end{document}
+snippet align
+	\\begin{align*}
+		$1
+	\\end{align*}
+snippet matr
+	\\begin{pmatrix}
+		$1
+	\\end{pmatrix}
+snippet tab
+	\\begin{tabular}{$1}
+		$2
+	\\end{tabular}
+snippet beg
+	\\begin{$1}
+		$2
+	\\end{$1}
