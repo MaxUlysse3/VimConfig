@@ -48,7 +48,7 @@ nnoremap <Up> <C-Y>
 noremap <F4> <Esc>:NERDTreeToggle<CR>
 noremap <F5> <Esc><C-w>t:q<CR>
 inoremap <c-s> <Esc>A
-nnoremap <leader>n :noh<CR>
+nnoremap <silent><leader>n :noh<CR>
 
 let g:snipMate = {}
 let g:snipMate = { 'snippet_version' : 1 }
@@ -79,7 +79,7 @@ augroup tex
 	autocmd FileType tex ab ensC \mathbb{C}
 	autocmd FileType tex ab ens0 \varnothing
 
-	autocmd FileType tex ab <=> \Leftrightarrow
+	autocmd FileType tex ab equ \Leftrightarrow
 	autocmd FileType tex ab qqs \forall
 	autocmd FileType tex ab ex \exists
 	autocmd FileType tex ab inc \subset
