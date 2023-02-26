@@ -1,6 +1,5 @@
 set nu
 set rnu
-
 set tabstop=4
 set shiftwidth=4
 
@@ -10,9 +9,14 @@ set autoindent
 set smartindent
 set scrolloff=10
 set nowrap
+set foldmethod=syntax
+set foldenable
 
 colorscheme elflord
 set background=dark
+
+hi Folded ctermbg=DarkBlue
+hi Folded ctermfg=LightBlue
 
 call plug#begin()
 
@@ -34,6 +38,8 @@ set nowritebackup
 set updatetime=300
 set signcolumn=no
 
+let delimitMate_matchpairs = "(:),[:],{:}"
+
 syntax on
 
 filetype on
@@ -49,6 +55,10 @@ noremap <F4> <Esc>:NERDTreeToggle<CR>
 noremap <F5> <Esc><C-w>t:q<CR>
 inoremap <c-s> <Esc>A
 nnoremap <silent><leader>n :noh<CR>
+nnoremap <silent><space> za
+nnoremap <silent><leader>delete :w<CR>ggdG
+nnoremap <silent><leader>tab :tabnew<CR>
+nnoremap <silent>g<space> <space>gcc
 
 let g:snipMate = {}
 let g:snipMate = { 'snippet_version' : 1 }
@@ -105,6 +115,23 @@ augroup cpp
 	autocmd FileType cpp nnoremap <F8> :!cmake --build ../build/<CR>:!../build/a.out<CR>
 	autocmd FileType cpp inoremap <c-z> <Esc>A;
 	autocmd FileType cpp inoremap <c-b> <Esc>A {<CR><Tab><CR>}<Up><Esc>xA
+	autocmd FileType cpp nnoremap <silent><leader>cmlst :tabnew CMakeLists.txt<CR>
+
+augroup end
+
+augroup rust
+	autocmd!
+	autocmd FileType rust inoremap <c-z> <Esc>A;
+	autocmd FileType rust inoremap <c-b> <Esc>A {<CR><Tab><CR>}<Up><Esc>xxxxA
+	autocmd FileType rust nnoremap <F8> :!cargo run<CR>
+	autocmd FileType rust nnoremap <F9> :!cargo check<CR>
+	autocmd FileType rust nnoremap <F12> :!cargo test<CR>
+	autocmd FileType rust inoremap <leader>dq [``]<Left><Left>
+
+	autocmd FileType rust ab asq! assert_eq!
+	autocmd FileType rust ab ass! assert!
+
+	autocmd FileType rust let delimitMate_quotes = "\""
 
 augroup end
 
@@ -135,4 +162,10 @@ augroup python
 	autocmd FileType python inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+augroup end
+
+augroup html
+	autocmd!
+
+	autocmd FileType html let delimitMate_matchpairs = "(:),[:],{:},<:>"
 augroup end

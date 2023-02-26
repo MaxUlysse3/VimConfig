@@ -6,6 +6,9 @@ snippet cmake
 	project($1)
 	add_executable(${2:a.out} ${3:main.cpp})
 
+	set(SRC_DIR "\${CMAKE_CURRENT_SOURCE_DIR}/source")
+	set(LIB_DIR "\${CMAKE_CURRENT_SOURCE_DIR}/lib")
+
 	target_include_directories(a.out PUBLIC
 		"\${PROJECT_BINARY_DIR}"
 		"\${PROJECT_SOURCE_DIR}"$4
