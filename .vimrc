@@ -30,6 +30,9 @@ Plug 'garbas/vim-snipmate'
 
 Plug 'neoclide/coc.nvim', {'for': ['java', 'python'], 'branch': 'release'}
 
+Plug 'vim-scripts/loremipsum', {'for': ['tex']}
+Plug 'vim-scripts/simplewhite.vim', {'for': ['tex']}
+
 call plug#end()
 
 set encoding=utf-8
@@ -77,6 +80,10 @@ augroup tex
 	autocmd FileType tex inoremap <leader>} \right}
 	autocmd FileType tex inoremap <leader>[ \left[
 	autocmd FileType tex inoremap <leader>] \right]
+
+	autocmd FileType tex nnoremap <leader>li :<C-U>exe "Loremipsum " . v:count1<CR>
+	autocmd FileType tex nnoremap <leader>le :Loreplace<CR>
+	autocmd FileType tex nnoremap <silent><leader>white :colorscheme simplewhite<CR>:set background=dark<CR>:set background=light<CR>
 
 	autocmd FileType tex ab sep \quad ; \quad
 	autocmd FileType tex ab qua \quad
