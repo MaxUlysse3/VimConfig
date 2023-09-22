@@ -28,7 +28,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'  " dependency for snipMate
 Plug 'tomtom/tlib_vim'  " dependency for snipMate
 Plug 'garbas/vim-snipmate'
 
-Plug 'neoclide/coc.nvim', {'for': ['java', 'python'], 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'for': ['java', 'rust'], 'branch': 'release'}
 
 Plug 'vim-scripts/loremipsum', {'for': ['tex']}
 Plug 'vim-scripts/simplewhite.vim', {'for': ['tex']}
@@ -62,6 +62,9 @@ nnoremap <silent><space> za
 nnoremap <silent><leader>delete :w<CR>ggdG
 nnoremap <silent><leader>tab :tabnew<CR>
 nnoremap <silent>g<space> <space>gcc
+noremap <silent><A-space> <Esc>
+" nnoremap b :<C-U>exe "b" . v:count<CR>
+" nnoremap B :buffers<CR>
 
 let g:snipMate = {}
 let g:snipMate = { 'snippet_version' : 1 }
@@ -80,6 +83,7 @@ augroup tex
 	autocmd FileType tex inoremap <leader>} \right}
 	autocmd FileType tex inoremap <leader>[ \left[
 	autocmd FileType tex inoremap <leader>] \right]
+	autocmd FileType tex inoremap <leader>e <Esc>i\left<Esc>la<space>\right<Esc>bbba
 
 	autocmd FileType tex nnoremap <leader>li :<C-U>exe "Loremipsum " . v:count1<CR>
 	autocmd FileType tex nnoremap <leader>le :Loreplace<CR>
@@ -100,7 +104,9 @@ augroup tex
 	autocmd FileType tex ab qqs \forall
 	autocmd FileType tex ab ex \exists
 	autocmd FileType tex ab inc \subset
+	autocmd FileType tex ab ninc \not\subset
 	autocmd FileType tex ab in \in
+	autocmd FileType tex ab nin \notin
 	autocmd FileType tex ab mult \times
 	autocmd FileType tex ab dif \neq
 	autocmd FileType tex ab => \Rightarrow
@@ -113,6 +119,8 @@ augroup tex
 	autocmd FileType tex ab Unn \bigcup
 	autocmd FileType tex ab itr \cap
 	autocmd FileType tex ab Itr \bigcap
+	autocmd FileType tex ab inf \infty
+	autocmd FileType tex ab ln \ln
 augroup end
 
 augroup cpp
@@ -133,6 +141,7 @@ augroup rust
 	autocmd FileType rust nnoremap <F8> :!cargo run<CR>
 	autocmd FileType rust nnoremap <F9> :!cargo check<CR>
 	autocmd FileType rust nnoremap <F12> :!cargo test<CR>
+	autocmd FileType rust nnoremap <F2> :!cargo bench<CR>
 	autocmd FileType rust inoremap <leader>dq [``]<Left><Left>
 
 	autocmd FileType rust ab asq! assert_eq!
@@ -140,6 +149,9 @@ augroup rust
 
 	autocmd FileType rust let delimitMate_quotes = "\""
 
+	autocmd FileType rust inoremap <silent><expr> <c-@> coc#refresh()
+	autocmd FileType rust inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 augroup end
 
 augroup java
@@ -161,18 +173,17 @@ augroup end
 augroup python
 	autocmd!
 
-	autocmd FileType python setlocal signcolumn=yes
-	
 	autocmd FileType python nnoremap <F8> :!python3 '%:t'<CR>
-
-	autocmd FileType python inoremap <silent><expr> <c-@> coc#refresh()
-	autocmd FileType python inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 augroup end
 
 augroup html
 	autocmd!
 
 	autocmd FileType html let delimitMate_matchpairs = "(:),[:],{:},<:>"
+augroup end
+
+augroup asm
+	autocmd!
+
+	autocmd FileType asm nnoremap <F8> :!nasm -f elf '%:t'<CR>:!ld -m elf_i386 -s -o out '%:p:r'.o<CR>:!./out<CR>
 augroup end
