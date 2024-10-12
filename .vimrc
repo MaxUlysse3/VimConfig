@@ -65,6 +65,7 @@ nnoremap <silent><leader>delete :w<CR>ggdG
 nnoremap <silent><leader>tab :tabnew<CR>
 nnoremap <silent>g<space> <space>gcc
 noremap <silent><A-space> <Esc>
+nnoremap <silent><leader>white :colorscheme simplewhite<CR>:set background=dark<CR>:set background=light<CR>
 " nnoremap b :<C-U>exe "b" . v:count<CR>
 " nnoremap B :buffers<CR>
 
@@ -89,7 +90,6 @@ augroup tex
 
 	autocmd FileType tex nnoremap <leader>li :<C-U>exe "Loremipsum " . v:count1<CR>
 	autocmd FileType tex nnoremap <leader>le :Loreplace<CR>
-	autocmd FileType tex nnoremap <silent><leader>white :colorscheme simplewhite<CR>:set background=dark<CR>:set background=light<CR>
 
 	autocmd FileType tex ab sep \quad ; \quad
 	autocmd FileType tex ab qua \quad
