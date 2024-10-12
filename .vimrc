@@ -27,12 +27,8 @@ Plug 'preservim/nerdtree'
 Plug 'MarcWeber/vim-addon-mw-utils'  " dependency for snipMate
 Plug 'tomtom/tlib_vim'  " dependency for snipMate
 Plug 'garbas/vim-snipmate'
-Plug 'tikhomirov/vim-glsl'
 
-<<<<<<< HEAD
-Plug 'neoclide/coc.nvim', {'for': ['java', 'python', 'c'], 'branch': 'release'}
-Plug 'kaarmu/typst.vim', {'for': ['typst']}
->>>>>>> f31a0d244a1fddb60d47acaa96b6fbf65ff30252
+Plug 'neoclide/coc.nvim', {'for': ['java', 'rust'], 'branch': 'release'}
 
 Plug 'vim-scripts/loremipsum', {'for': ['tex']}
 Plug 'vim-scripts/simplewhite.vim', {'for': ['tex']}
@@ -67,6 +63,7 @@ nnoremap <silent><leader>delete :w<CR>ggdG
 nnoremap <silent><leader>tab :tabnew<CR>
 nnoremap <silent>g<space> <space>gcc
 noremap <silent><A-space> <Esc>
+nnoremap <silent><leader>white :colorscheme simplewhite<CR>:set background=dark<CR>:set background=light<CR>
 " nnoremap b :<C-U>exe "b" . v:count<CR>
 " nnoremap B :buffers<CR>
 
@@ -91,7 +88,7 @@ augroup tex
 
 	autocmd FileType tex nnoremap <leader>li :<C-U>exe "Loremipsum " . v:count1<CR>
 	autocmd FileType tex nnoremap <leader>le :Loreplace<CR>
-	autocmd FileType tex nnoremap <silent><leader>white :colorscheme simplewhite<CR>:set background=dark<CR>:set background=light<CR>
+	" autocmd FileType tex nnoremap <silent><leader>white :colorscheme simplewhite<CR>:set background=dark<CR>:set background=light<CR>
 
 	autocmd FileType tex ab sep \quad ; \quad
 	autocmd FileType tex ab qua \quad
@@ -123,16 +120,11 @@ augroup tex
 	autocmd FileType tex ab Unn \bigcup
 	autocmd FileType tex ab itr \cap
 	autocmd FileType tex ab Itr \bigcap
-<<<<<<< HEAD
 	autocmd FileType tex ab inf \infty
 	autocmd FileType tex ab ln \ln
-=======
-	autocmd FileType tex ab item \item
-	autocmd FileType tex ab rnd \circ
-	autocmd FileType tex ab tend \xrightarrow[
-
-	autocmd FileType tex let delimitMate_quotes = "\""
->>>>>>> f31a0d244a1fddb60d47acaa96b6fbf65ff30252
+	autocmd FileType tex ab lim \lim\limits_
+	autocmd FileType tex ab prp \mathcal{P}
+	autocmd FileType tex ab itm \item
 augroup end
 
 augroup cpp
@@ -146,19 +138,6 @@ augroup cpp
 
 augroup end
 
-augroup c
-	autocmd!
-
-	autocmd FileType c nnoremap <F8> :!make<CR>:!./a.out<CR>
-	autocmd FileType c inoremap <c-z> <Esc>A;
-	autocmd FileType c inoremap <c-b> <Esc>A {<CR><Tab><CR>}<Up><Esc>xA
-
-	autocmd FileType c ab inc #include
-	autocmd FileType c inoremap <silent><expr> <c-@> coc#refresh()
-	autocmd FileType c inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-augroup end
-
 augroup rust
 	autocmd!
 	autocmd FileType rust inoremap <c-z> <Esc>A;
@@ -168,6 +147,7 @@ augroup rust
 	autocmd FileType rust nnoremap <F12> :!cargo test<CR>
 	autocmd FileType rust nnoremap <F2> :!cargo bench<CR>
 	autocmd FileType rust inoremap <leader>dq [``]<Left><Left>
+	autocmd FileType rust inoremap <leader>de eprintln!("{:?}", );<Left><Left>
 
 	autocmd FileType rust ab asq! assert_eq!
 	autocmd FileType rust ab ass! assert!
@@ -193,14 +173,11 @@ augroup java
 	autocmd FileType java inoremap <silent><expr> <c-@> coc#refresh()
 	autocmd FileType java inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 augroup end
 
 augroup python
 	autocmd!
 
-	autocmd FileType python setlocal signcolumn=yes
-	
 	autocmd FileType python nnoremap <F8> :!python3 '%:t'<CR>
 augroup end
 
@@ -210,23 +187,8 @@ augroup html
 	autocmd FileType html let delimitMate_matchpairs = "(:),[:],{:},<:>"
 augroup end
 
-<<<<<<< HEAD
 augroup asm
 	autocmd!
 
 	autocmd FileType asm nnoremap <F8> :!nasm -f elf '%:t'<CR>:!ld -m elf_i386 -s -o out '%:p:r'.o<CR>:!./out<CR>
 augroup end
-=======
-augroup ocaml
-	autocmd!
-	
-	autocmd FileType ocaml let delimitMate_quotes = "\""
-
-	" autocmd FileType ocaml nnoremap <F8> dune exec :call split("%:p:h", '/')[-2]<CR>
-augroup end
-
-augroup typst
-	autocmd!
-
-	autocmd FileType typst let delimitMate_quotes = "\""
->>>>>>> f31a0d244a1fddb60d47acaa96b6fbf65ff30252
