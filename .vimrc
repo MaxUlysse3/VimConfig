@@ -31,6 +31,7 @@ Plug 'tikhomirov/vim-glsl'
 
 Plug 'neoclide/coc.nvim', {'for': ['java', 'python', 'c'], 'branch': 'release'}
 Plug 'kaarmu/typst.vim', {'for': ['typst']}
+Plug 'ziglang/zig.vim', {'for': ['zig']}
 
 Plug 'vim-scripts/loremipsum', {'for': ['tex']}
 Plug 'vim-scripts/simplewhite.vim', {'for': ['tex']}
@@ -223,3 +224,11 @@ augroup typst
 	autocmd!
 
 	autocmd FileType typst let delimitMate_quotes = "\""
+augroup end
+
+augroup zig
+	autocmd!
+
+	autocmd FileType zig inoremap <c-z> <Esc>A;
+	autocmd FileType zig inoremap <c-b> <Esc>A {<CR><Tab><CR>}<Up><Esc>xA
+augroup end
