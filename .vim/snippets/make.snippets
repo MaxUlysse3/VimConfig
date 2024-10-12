@@ -1,0 +1,12 @@
+snippet main
+	a.out: main.o
+		cc -o a.out main.o -fsanitize=address -lm
+
+	main.o: main.c
+		cc -o main.o -c -Wall -Wextra -Wvla main.c 
+snippet dep
+	$1.o: $2
+		cc -c $1.c -o$3 $1.o$4
+snippet clean
+	clean:
+		rm $1
