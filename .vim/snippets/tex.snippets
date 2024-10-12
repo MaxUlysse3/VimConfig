@@ -12,13 +12,13 @@ snippet document
 	\\usepackage{xcolor}
 	\\usepackage{ulem}
 	\\usepackage{enumitem}
+	\\usepackage{xfrac}
 
-	\\newcommand\\sechidenum[1]{\\section*{#1} \\addcontentsline{toc}{section}{\\textbf{#1}} \\setcounter{subsection}{0} \\addtocounter{section}{1}}
+	\\newcommand\\sechidenum[1]{\\section*{#1} \\addcontentsline{toc}{section}{\\textbf{#1}} \\setcounter{subsection}{0}}
 	\\newcommand\\iltext[1]{\\quad \\text{#1} \\quad}
-	\\newcommand\\ilnote[1]{{\\color{gray} \\texttt{#1}}}
+	\\newcommand\\ilnote[1]{\\color{grey} \\texttt{#1}}
 	\\newcommand\\ts[1]{\\textsuperscript{#1}}
 	\\newcommand\\abs[1]{\\lvert #1 \\rvert}
-	\\newcommand\\func[2]{#1 \longmapsto #2}
 
 	\\title{$2}
 	\\author{$3}
@@ -34,10 +34,6 @@ snippet align
 	\\begin{align*}
 		$1
 	\\end{align*}
-snippet math
-	\\[
-		$1
-	\\]
 snippet matr
 	\\begin{pmatrix}
 		$1
