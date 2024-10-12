@@ -29,10 +29,8 @@ Plug 'tomtom/tlib_vim'  " dependency for snipMate
 Plug 'garbas/vim-snipmate'
 Plug 'tikhomirov/vim-glsl'
 
-<<<<<<< HEAD
 Plug 'neoclide/coc.nvim', {'for': ['java', 'python', 'c'], 'branch': 'release'}
 Plug 'kaarmu/typst.vim', {'for': ['typst']}
->>>>>>> f31a0d244a1fddb60d47acaa96b6fbf65ff30252
 
 Plug 'vim-scripts/loremipsum', {'for': ['tex']}
 Plug 'vim-scripts/simplewhite.vim', {'for': ['tex']}
@@ -123,16 +121,13 @@ augroup tex
 	autocmd FileType tex ab Unn \bigcup
 	autocmd FileType tex ab itr \cap
 	autocmd FileType tex ab Itr \bigcap
-<<<<<<< HEAD
 	autocmd FileType tex ab inf \infty
 	autocmd FileType tex ab ln \ln
-=======
 	autocmd FileType tex ab item \item
 	autocmd FileType tex ab rnd \circ
 	autocmd FileType tex ab tend \xrightarrow[
 
 	autocmd FileType tex let delimitMate_quotes = "\""
->>>>>>> f31a0d244a1fddb60d47acaa96b6fbf65ff30252
 augroup end
 
 augroup cpp
@@ -210,13 +205,12 @@ augroup html
 	autocmd FileType html let delimitMate_matchpairs = "(:),[:],{:},<:>"
 augroup end
 
-<<<<<<< HEAD
 augroup asm
 	autocmd!
 
 	autocmd FileType asm nnoremap <F8> :!nasm -f elf '%:t'<CR>:!ld -m elf_i386 -s -o out '%:p:r'.o<CR>:!./out<CR>
 augroup end
-=======
+
 augroup ocaml
 	autocmd!
 	
@@ -229,4 +223,3 @@ augroup typst
 	autocmd!
 
 	autocmd FileType typst let delimitMate_quotes = "\""
->>>>>>> f31a0d244a1fddb60d47acaa96b6fbf65ff30252
