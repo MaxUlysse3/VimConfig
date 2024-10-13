@@ -53,6 +53,7 @@ filetype plugin on
 filetype indent on
 
 let mapleader = "²"
+noremap œ ²
 nnoremap <Left> gT
 nnoremap <Right> gt
 nnoremap <Down> <C-E>
