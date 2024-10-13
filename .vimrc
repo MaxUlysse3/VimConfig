@@ -171,9 +171,9 @@ augroup rust
 
 	autocmd FileType rust let delimitMate_quotes = "\""
 
-	autocmd FileType rust inoremap <silent><expr> <c-@> coc#refresh()
-	autocmd FileType rust inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+	" autocmd FileType rust inoremap <silent><expr> <c-@> coc#refresh()
+	" autocmd FileType rust inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              " \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 augroup end
 
 augroup java
