@@ -218,7 +218,7 @@ augroup ocaml
 	
 	autocmd FileType ocaml let delimitMate_quotes = "\""
 
-	" autocmd FileType ocaml nnoremap <F8> dune exec :call split("%:p:h", '/')[-2]<CR>
+	autocmd FileType ocaml nnoremap <F8> :!utop -init main.ml<CR>
 augroup end
 
 augroup typst
