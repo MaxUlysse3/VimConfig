@@ -181,8 +181,9 @@ augroup java
 	
 	autocmd FileType java setlocal signcolumn=yes
 
-	autocmd FileType java nnoremap <F8> :!javac -d ../build/ ./net/maxulysse/main/Main.java<CR>:!java --class-path ../build/ net.maxulysse.main.Main<CR>
+	autocmd FileType java nnoremap <F8> :!javac -d ../build/ ./Main.java<CR>:!java --class-path ../build/ Main<CR>
 	autocmd FileType java inoremap <c-z> <Esc>A;
+	autocmd FileType java inoremap <c-b> <Esc>A {<CR><Tab><CR>}<Up><Esc>xA
 
 	autocmd FileType java "coc-java": ">=1.4.12",
 	autocmd FileType java "coc-java-debug": ">=0.1.4",
