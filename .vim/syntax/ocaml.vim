@@ -179,7 +179,7 @@ syn keyword  ocamlKeyword  method mutable new nonrec of
 syn keyword  ocamlKeyword  parser private rec
 syn keyword  ocamlKeyword  try type
 syn keyword  ocamlKeyword  virtual when while with
-syn keyword  ocamlKeyword  end sig
+syn keyword  ocamlKeyword  end sig struct
 
 if exists("ocaml_revised")
   syn keyword  ocamlKeyword  do value
