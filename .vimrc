@@ -29,7 +29,7 @@ Plug 'tomtom/tlib_vim'  " dependency for snipMate
 Plug 'garbas/vim-snipmate'
 Plug 'tikhomirov/vim-glsl'
 
-Plug 'neoclide/coc.nvim', {'for': ['java', 'python', 'c'], 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'for': ['rust', 'java', 'python', 'c'], 'branch': 'release'}
 Plug 'kaarmu/typst.vim', {'for': ['typst']}
 Plug 'ziglang/zig.vim', {'for': ['zig']}
 
@@ -171,9 +171,9 @@ augroup rust
 
 	autocmd FileType rust let delimitMate_quotes = "\""
 
-	" autocmd FileType rust inoremap <silent><expr> <c-@> coc#refresh()
-	" autocmd FileType rust inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              " \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+	autocmd FileType rust inoremap <silent><expr> <c-@> coc#refresh()
+	autocmd FileType rust inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 augroup end
 
 augroup java
