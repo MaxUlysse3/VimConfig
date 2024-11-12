@@ -231,6 +231,8 @@ augroup end
 augroup zig
 	autocmd!
 
+	autocmd FileType zig nnoremap <F8> :!zig run main.zig<CR>
+
 	autocmd FileType zig inoremap <c-z> <Esc>A;
 	autocmd FileType zig inoremap <c-b> <Esc>A {<CR><Tab><CR>}<Up><Esc>xA
 augroup end
